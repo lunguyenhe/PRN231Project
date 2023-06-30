@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PRN231API.Models.Comment>
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Comment</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.ProductId)</th>
+            <th>@Html.DisplayNameFor(model=>model.Comment1)</th>
+
+            <th>@Html.DisplayNameFor(model=>model.Customer.FirstName)</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.ProductId)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Comment1)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Customer.FirstName)</td>
+
+                <td>
+                    <form asp-action="Delete" asp-route-id="@item.CommentId" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

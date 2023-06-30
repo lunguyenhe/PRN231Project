@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PRN231API.Models.Comment>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Comment detail</h1>
+<a asp-action="Create">Create Product</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model=>model.ProductId)</th>
+            <th>@Html.DisplayNameFor(model=>model.Comment1)</th>
+
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>item.ProductId)</td>
+                <td>@Html.DisplayFor(modelItem=>item.Comment1)</td>
+
+                <td>
+                    <form asp-action="Delete" asp-route-id="@item.ProductId" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
